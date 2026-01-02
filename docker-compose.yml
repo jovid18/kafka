@@ -45,4 +45,14 @@ services:
       CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
-      CONNECT_PLUGIN_PATH: /usr/share/java,/usr/share/confluent-hub-components
+      CONNECT_PLUGIN_PATH: /usr/share/java,/usr/share/confluent-hub-components,/usr/share/filestream-connectors
+    command:
+      - bash
+      - -c
+      - |
+        # FileStream 커넥터 복사
+        mkdir -p /usr/share/filestream-connectors
+        cp /usr/share/java/kafka/connect-file-*.jar /usr/share/filestream-connectors/ 2>/dev/null || true
+        cp /usr/share/java/kafka/kafka-clients-*.jar /usr/share/filestream-connectors/ 2>/dev/null || true
+        # Kafka Connect 실행
+        /etc/confluent/docker/run

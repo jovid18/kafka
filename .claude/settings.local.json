@@ -4,7 +4,8 @@
       "Bash(docker-compose up:*)",
       "Bash(docker-compose ps:*)",
       "Bash(curl:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(docker exec:*)"
     ]
   }
 }
