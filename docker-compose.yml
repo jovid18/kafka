@@ -1,0 +1,12 @@
+version: '3'
+services:
+  kafka:
+    build:
+      context: .
+      dockerfile: Dockerfile.kafka
+    container_name: kafka-linux
+    ports:
+      - "9092:9092"
+    stdin_open: true    # -i 옵션
+    tty: true           # -t 옵션
+    command: /bin/bash
